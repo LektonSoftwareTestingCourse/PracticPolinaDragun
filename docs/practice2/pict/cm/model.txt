@@ -1,0 +1,12 @@
+bin:              known, ~unknown, ~length_5, ~length_7
+cardholder_name:  valid, ~empty
+currency_code:    code_643, ~other, ~absent
+daily_limit:      explicit, default, ~negative_or_zero
+monthly_limit:    explicit, default, ~negative_or_zero
+initial_balance:  explicit, default, ~negative_or_zero
+
+IF [bin] <> "known" OR [cardholder_name] <> "valid" OR [currency_code] <> "code_643"
+      THEN [daily_limit] = "explicit" AND [monthly_limit] = "explicit" AND [initial_balance] = "explicit";
+
+IF [daily_limit] = "negative_or_zero" OR [monthly_limit] = "negative_or_zero" OR [initial_balance] = "negative_or_zero"
+    THEN [daily_limit] <> "default" AND [monthly_limit] <> "default" AND [initial_balance] <> "default";

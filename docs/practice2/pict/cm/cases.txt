@@ -1,0 +1,15 @@
+bin	cardholder_name	currency_code	daily_limit	monthly_limit	initial_balance
+known	valid	code_643	explicit	default	explicit
+known	valid	code_643	default	explicit	default
+known	valid	code_643	explicit	explicit	explicit
+known	valid	code_643	explicit	default	default
+known	valid	code_643	default	default	explicit
+~unknown	valid	code_643	explicit	explicit	explicit
+known	valid	code_643	~negative_or_zero	explicit	explicit
+known	valid	code_643	explicit	~negative_or_zero	explicit
+known	valid	~absent	explicit	explicit	explicit
+known	valid	code_643	explicit	explicit	~negative_or_zero
+~length_5	valid	code_643	explicit	explicit	explicit
+~length_7	valid	code_643	explicit	explicit	explicit
+known	valid	~other	explicit	explicit	explicit
+known	~empty	code_643	explicit	explicit	explicit

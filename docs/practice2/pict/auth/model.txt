@@ -1,0 +1,14 @@
+cms_availability:   available, ~timeout
+bin_lookup:         available, ~unavailable
+card_lookup:        found, ~not_found
+card_status:        ACTIVE, ~INACTIVE, ~BLOCKED, ~EXPIRED
+expiry:             valid, current_month, ~expired
+amount_vs_daily:    below, equal, ~above
+amount_vs_monthly:  below, equal, ~above
+amount_vs_balance:  below, equal, ~above
+
+IF [cms_availability] = "timeout" OR [card_lookup] = "not_found" OR [card_status] <> "ACTIVE" THEN [expiry] = "valid"
+    AND [amount_vs_daily] = "below" AND [amount_vs_monthly] = "below" AND [amount_vs_balance] = "below";
+
+IF [expiry] = "expired" THEN [amount_vs_daily] = "below"
+    AND [amount_vs_monthly] = "below" AND [amount_vs_balance] = "below";
